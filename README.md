@@ -6,7 +6,7 @@
 
 - The CSV-files is based on taxi trips made in New York City.
 
-- This ML-application makes use of the # Regression # algorithm.
+- This ML-application makes use of the Regression algorithm. https://en.wikipedia.org/wiki/Regression_analysis
 
 ====================================================
 
