@@ -50,9 +50,9 @@ namespace Taxi_fare_ML
 
 
             Console.WriteLine();
-            Console.WriteLine($"*************************************************");
+            Console.WriteLine($"*===============================================*");
             Console.WriteLine($"*       Model quality metrics evaluation         ");
-            Console.WriteLine($"*------------------------------------------------");
+            Console.WriteLine($"*===============================================*");
             Console.WriteLine();
 
             // RSquared takes values between 0 and 1. The closer its value is to 1, the better the model is
@@ -80,6 +80,14 @@ namespace Taxi_fare_ML
                 PaymentType = "CRD",
                 FareAmount = 0 // To predict. Actual/Observed = 15.5
             };
+
+            // Run prediction pipeline on one example
+            var prediction = predictionFunction.Predict(taxiTripSample);
+
+
+            Console.WriteLine($"**********************************************************************");
+            Console.WriteLine($"Predicted fare: {prediction.FareAmount:0.####}, actual fare: 15.5");
+            Console.WriteLine($"**********************************************************************");
         }
 
     }
