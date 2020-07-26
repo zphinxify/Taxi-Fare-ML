@@ -68,6 +68,18 @@ namespace Taxi_fare_ML
         {
             // Uses the CreatePredictionEngine to predict the Taxifare
             var predictionFunction = mlContext.Model.CreatePredictionEngine<TaxiTrip, TaxiTripFarePrediction>(model);
+
+            //Sample data to test the prediction-engine
+            var taxiTripSample = new TaxiTrip()
+            {
+                VendorId = "VTS",
+                RateCode = "1",
+                PassengerCount = 1,
+                TripTime = 1140,
+                TripDistance = 3.75f,
+                PaymentType = "CRD",
+                FareAmount = 0 // To predict. Actual/Observed = 15.5
+            };
         }
 
     }
