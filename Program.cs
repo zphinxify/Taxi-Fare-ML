@@ -20,6 +20,8 @@ namespace Taxi_fare_ML
             var model = Train(mlContext, _trainDataPath);
 
             Evaluate(mlContext, model);
+
+            TestSinglePrediction(mlContext, model);
         }
 
         public static ITransformer Train(MLContext mlContext, string dataPath)
@@ -40,6 +42,31 @@ namespace Taxi_fare_ML
         private static void Evaluate(MLContext mlContext, ITransformer model)
         {
             IDataView dataView = mlContext.Data.LoadFromTextFile<TaxiTrip>(_testDataPath, hasHeader: true, separatorChar: ',');
+
+            //The Transform() method makes predictions for the test dataset input rows.
+            var predictions = model.Transform(dataView);
+
+            var metrics = mlContext.Regression.Evaluate(predictions, "Label", "Score");
+
+
+            Console.WriteLine();
+            Console.WriteLine($"*************************************************");
+            Console.WriteLine($"*       Model quality metrics evaluation         ");
+            Console.WriteLine($"*------------------------------------------------");
+            Console.WriteLine();
+
+            // RSquared takes values between 0 and 1. The closer its value is to 1, the better the model is
+            Console.WriteLine($"*       RSquared Score:      {metrics.RSquared:0.##}");
+
+            // RMS stems from the regression model. The lower the value, the better the model
+            Console.WriteLine($"*       Root Mean Squared Error:      {metrics.RootMeanSquaredError:#.##}");
+        }
+
+
+        // Predicts fare amount based on test data, displays the predicted results
+        private static void TestSinglePrediction(MLContext mlContext, ITransformer model)
+        {
+            
         }
 
     }
