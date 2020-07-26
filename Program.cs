@@ -18,6 +18,8 @@ namespace Taxi_fare_ML
         {
             MLContext mlContext = new MLContext(seed: 0);
             var model = Train(mlContext, _trainDataPath);
+
+            Evaluate(mlContext, model);
         }
 
         public static ITransformer Train(MLContext mlContext, string dataPath)
@@ -37,7 +39,7 @@ namespace Taxi_fare_ML
 
         private static void Evaluate(MLContext mlContext, ITransformer model)
         {
-            
+            IDataView dataView = mlContext.Data.LoadFromTextFile<TaxiTrip>(_testDataPath, hasHeader: true, separatorChar: ',');
         }
 
     }
