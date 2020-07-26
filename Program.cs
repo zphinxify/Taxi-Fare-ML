@@ -34,5 +34,11 @@ namespace Taxi_fare_ML
 
             return (model);
         }
+
+        private static void Evaluate(MLContext mlContext, ITransformer model)
+        {
+            
+        }
+
     }
 }
