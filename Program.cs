@@ -78,7 +78,7 @@ namespace Taxi_fare_ML
                 TripTime = 1140,
                 TripDistance = 3.75f,
                 PaymentType = "CRD",
-                FareAmount = 0 // To predict. Actual/Observed = 15.5
+                FareAmount = 0
             };
 
             // Run prediction pipeline on one example
