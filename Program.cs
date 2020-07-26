@@ -66,7 +66,8 @@ namespace Taxi_fare_ML
         // Predicts fare amount based on test data, displays the predicted results
         private static void TestSinglePrediction(MLContext mlContext, ITransformer model)
         {
-            
+            // Uses the CreatePredictionEngine to predict the Taxifare
+            var predictionFunction = mlContext.Model.CreatePredictionEngine<TaxiTrip, TaxiTripFarePrediction>(model);
         }
 
     }
